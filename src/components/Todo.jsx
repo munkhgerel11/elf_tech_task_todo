@@ -3,14 +3,17 @@ import { Card, CardContent, Container, IconButton, TextField, Typography } from 
 import { Cancel, Check, Delete, Edit, Save } from '@mui/icons-material'
 
 const Todo = ( {title, id, done, doneTodo, deleteTodo, editTodo, isEdit, updateNewTodo } ) => {
-    const [editedText, setEditedText] = useState({title}) 
+    title = title +''// edit daraad shuud save hiihed garj baigaa aldaa
+    let [editedText, setEditedText] = useState({title}) 
+    
     const markDone = () => doneTodo(id)   // Гүйцэтгэх үйлдлүүдийг дуудса функцүүд
     const deleteDo = () => deleteTodo(id) // App.js ирсэн устах функцыг дуудаж байна
     const editThisTodo = () => editTodo(id)  // Edit хийж өөрчлөх боломжтойгоор рэндэрлэнэ
     const todoStyle = done ? {textDecoration: "line-through", float: "left", color: 'green'} : {textDecoration: 'none', float:'left '}
     const todoStyle2 = done ? {background: 'lightgreen' , marginTop:35} : {background: 'lightblue' , marginTop:35}
     const updateEdit = (e) =>  {   // Эдит хийсэн шинэ утгаар тодо-г сольно
-        e.preventDefault();        // Давхар (parent) дарагталтыг согсоож байна
+        e.preventDefault();                // Давхар (parent) дарагталтыг согсоож байна
+        editedText = editedText +''
         updateNewTodo(id, editedText)
     }
     const editRender = () => {  // Edit буюу өөрчлж бвл энэ функцээр рэндэрлүүлнэ

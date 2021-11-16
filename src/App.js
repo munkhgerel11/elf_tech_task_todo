@@ -38,26 +38,50 @@ function App() {
     setTodos(todos.filter(todo => todo.id !== id))
   };
 
-  const editTodo = (id) => {
+  const editTodo = async (id) => {
 
+    const todoToEdit = await fetchTodo(id);
+    
+    const doneEdit = { ...todoToEdit, isEdit: !todoToEdit.isEdit};
+
+    const res = await fetch('http://localhost:8000/todos/'+id, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(doneEdit),
+    })
+
+    const data = await res.json(doneEdit)
     setTodos(
-      todos.map(todo =>{
-        if(todo.id === id)  {
-          todo.isEdit = !todo.isEdit
-        }
-            
-        return todo
-        
-      })
+      todos.map((todo) =>
+        todo.id=== id ? {...todo, isEdit: data.isEdit} : todo)
     )
+      
+
 
   };
-  const updateNewTodo = (id, editedText) => {
+  const updateNewTodo = async (id, editedText) => {
+    console.log('hi')
+    const todoToUpdate = await fetchTodo(id);
+    const updatedTodo = { ...todoToUpdate, title: editedText, isEdit: !todoToUpdate.isEdit};
+
+    const res = await fetch('http://localhost:8000/todos/'+id, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(updatedTodo),
+    })
+
+    const data = await res.json(updatedTodo)
+
     setTodos(
       todos.map(todo => {
       if(todo.id === id) {
+        
         todo.title = editedText
-        todo.isEdit = !todo.isEdit
+        todo.isEdit = data.isEdit
       };
       return todo
       })
@@ -77,7 +101,6 @@ function App() {
       },
       body: JSON.stringify(doneTodo),
     })
-
 
     const data = await res.json(doneTodo)
     setTodos(

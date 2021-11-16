@@ -1,20 +1,38 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "Learn JSX",
+      "id": "3d9833ef-fed9-49fd-952f-29952b10a7e4",
+      "title": "JavaScript Гүнзгийрүүлэн судлах",
       "isDone": true,
       "isEdit": false
     },
     {
-      "id": 2,
-      "title": "Do the task",
+      "id": "d52f428e-0d6e-4e8d-9df3-1b607e260d7c",
+      "title": "JSX ийн тухай сурах мөн туршиж үзэх",
       "isDone": true,
       "isEdit": false
     },
     {
-      "id": 3,
-      "title": "Why this is not working",
+      "id": "304c6163-6c6d-433d-84d6-935e6b635c61",
+      "title": "Анхны component хийх",
+      "isDone": true,
+      "isEdit": false
+    },
+    {
+      "id": "9b3ed586-85f2-4009-a865-7aebb035dd53",
+      "title": "Тodo таск хийх",
+      "isDone": true,
+      "isEdit": false
+    },
+    {
+      "id": "65f116e0-83df-459a-915c-fb0742ca5ec2",
+      "title": "Backend хөгжүүлэн холбох",
+      "isDone": false,
+      "isEdit": false
+    },
+    {
+      "id": "17ab30a5-3b3f-496c-abdf-082ab07a7fd8",
+      "title": "Юу болоод байгааг ойлгохгүй бууж өгөх",
       "isDone": false,
       "isEdit": false
     }
