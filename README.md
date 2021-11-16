@@ -2,7 +2,22 @@
 # elf_tech_task_todo
 Мөнхгэрэл Elf-tech комнпаний таск Todo хийлээ
 =======
-
+"dependencies": {
+        "@emotion/react": "^11.6.0",
+        "@emotion/styled": "^11.6.0",
+        "@mui/icons-material": "^5.1.0",
+        "@mui/lab": "^5.0.0-alpha.54",
+        "@mui/material": "^5.1.0",
+        "@testing-library/jest-dom": "^5.15.0",
+        "@testing-library/react": "^11.2.7",
+        "@testing-library/user-event": "^12.8.3",
+        "json-server": "^0.17.0",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-scripts": "^4.0.3",
+        "uuid": "^8.3.2",
+        "web-vitals": "^1.1.2"
+      }
 ### `npm run server`
 шаардлагатай dependencies суулгасны дараа Json серверээ асаана
 
