@@ -4,41 +4,47 @@ import React, {useState , useEffect } from "react"
 import { v4 }  from 'uuid'
 import { Tab, Tabs  } from '@mui/material'
 import TodoForm from './components/TodoForm';
-import TodoList from './components/TodoList';
-function App() {
-  const [todos, setTodos] = useState([])
-  const [val, setVal] = useState(0)
+import TodoList from './components/TodoList';  // үүсгэсэн компонэнтүүд
+function App() {        
+  const [todos, setTodos] = useState([])  // todo болгоноо todos гэх state үүсгэн обектууд болгон хадгална, эхний утгаа json серверээс авах тул хоосөн бн
+  const [val, setVal] = useState(0) // таб state
+/* todos state нь id 
+                  title буюу ямар хийх зүйл байгааг харуулах string,
+                  isDone буюу гүйцэтгэгдсэн эсэхийг харуулах boolen
+                  isEdit буюу засварлагдах хэсэгт байгаа эсэхийг харуулах boolean
+                  гэсэн бүтэцтэй
 
-  useEffect(() => {
-    const getTodos = async () => {
+*/
+  useEffect(() => {       // useEffect hook ашиглан json сервер дээрх todo- дуудаж бн
+    const getTodos = async () => {       
       const todosFromServer = await fetchTodos()
       setTodos(todosFromServer)
     }
     getTodos()
   }, []) 
 
-  const fetchTodos = async () => {
+  const fetchTodos = async () => {    //  Эхний утга авах request
     const res = await fetch('http://localhost:8000/todos')
     const data = await res.json()
 
     return data
  }
 
- const fetchTodo = async (id) => {
+ const fetchTodo = async (id) => {      // серверэээс id  ашиган 1 тодо сонгон дуудаж авах request
   const res = await fetch('http://localhost:8000/todos/'+ id)
   const data = await res.json()
 
   return data
 }
 
-  const deleteTodo = async (id) => {
+  const deleteTodo = async (id) => {  // id ашиглан тодо серверээс мөн дахин рендерлэх
     await fetch('http://localhost:8000/todos/' + id, {
       method: 'DELETE'
     })
     setTodos(todos.filter(todo => todo.id !== id))
   };
 
-  const editTodo = async (id) => {
+  const editTodo = async (id) => {       // id ашиглан тодог өөрчлөх хэсэгрүү шилжих
 
     const todoToEdit = await fetchTodo(id);
     
@@ -61,7 +67,7 @@ function App() {
 
 
   };
-  const updateNewTodo = async (id, editedText) => {
+  const updateNewTodo = async (id, editedText) => { // Өөрчлөлтийг хадгалах хүсэлт илгээх хэсэг
     console.log('hi')
     const todoToUpdate = await fetchTodo(id);
     const updatedTodo = { ...todoToUpdate, title: editedText, isEdit: !todoToUpdate.isEdit};
@@ -89,7 +95,7 @@ function App() {
     )
   }
 
-  const doneTodo = async (id) => {
+  const doneTodo = async (id) => {            //Гүйцэтгэсэн эсэхийг тэмдэглэх, сервер дээр мөн өөрчлөх хэсэг
     const todoToDone = await fetchTodo(id);
     
     const doneTodo = { ...todoToDone, isDone: !todoToDone.isDone};
@@ -111,7 +117,7 @@ function App() {
   };
   let todonum = Number(Object.keys(todos).length)
 
-  const addTodo = async (text) => {
+  const addTodo = async (text) => {    //Шинээр тодо нэмэх
     const newTodo = {
       id: v4(),
       title: text,
@@ -139,7 +145,8 @@ function App() {
       <h1>
          Elf-tech Task "Make Todo webapp"
       </h1>
-      <Tabs centered={true} value={val} onChange={handelTabs}>
+      <Tabs centered={true} value={val} onChange={handelTabs}>   {// Табууд үүсгэн хуваасан
+      }
         <Tab label='Хийх зүйлсээ оруулах' />
         <Tab label='Дууссан :)' />
         <Tab label='Дуусгаж амжаагүй :\' />
