@@ -1,0 +1,22 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Learn JSX",
+      "isDone": true,
+      "isEdit": false
+    },
+    {
+      "id": 2,
+      "title": "Do the task",
+      "isDone": true,
+      "isEdit": false
+    },
+    {
+      "id": 3,
+      "title": "Why this is not working",
+      "isDone": false,
+      "isEdit": false
+    }
+  ]
+}
