@@ -2,6 +2,8 @@
 # elf_tech_task_todo
 Мөнхгэрэл Elf-tech комнпаний таск Todo хийлээ
 =======
+node -- version 12+
+
 "dependencies": {
         "@emotion/react": "^11.6.0",
         "@emotion/styled": "^11.6.0",
